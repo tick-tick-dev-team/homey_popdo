@@ -1,13 +1,25 @@
 package hello.hellospring.repository;
 
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
+import org.apache.catalina.Store;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import hello.hellospring.domain.Member;
 
 public class MemoryMemberRepositoryTest {
 	
-	MemberRepository repository = new MemoryMemberRepository();
+	MemoryMemberRepository repository = new MemoryMemberRepository();
+	
+	// 하나의 테스트가 끝날 때마다 저장소 안을 clean함
+	@AfterEach
+	public void afterEash() {
+		repository.clearStore();
+	}
 	
 	@Test
 	public void save() {
@@ -36,7 +48,24 @@ public class MemoryMemberRepositoryTest {
 		
 		Assertions.assertThat(result).isEqualTo(member1);
 		
+	}
+	
+	@Test
+	public void findAll() {
+		Member member1 = new Member();
+		member1.setName("Spring1!");
+		repository.save(member1);
+		
+		Member member2 = new Member();
+		member2.setName("Spring2!");
+		repository.save(member2);
+		
+		List<Member> result = repository.findAll();
+		
+		Assertions.assertThat(result.size()).isEqualTo(2);
 		
 	}
+	
+
 
 }
