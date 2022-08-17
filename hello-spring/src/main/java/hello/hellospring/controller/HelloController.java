@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 	
+	// 22.08.17 - h2 연결 
+	
 	//정적 콘텐츠
 	@GetMapping("hello")
 	public String hello(Model model) {
