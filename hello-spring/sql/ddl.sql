@@ -1,3 +1,6 @@
+-- h2 db 연동
+
+-- member 테이블 삭제 및 생성
 drop table if exists member CASCADE;
 create table member
 (
@@ -6,6 +9,7 @@ create table member
  primary key (id)
 );
 
+-- member 테이블 조회 및 추가
 select * from member;
 
 insert into member(name) values('spring');

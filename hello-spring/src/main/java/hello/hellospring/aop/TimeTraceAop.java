@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
+// AOP 테스트 - 전체 메서드의 동일하게 기능 추가 가능
 @Aspect
 @Component
 public class TimeTraceAop {
